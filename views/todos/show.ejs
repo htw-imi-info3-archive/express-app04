@@ -9,6 +9,11 @@
                 <% } %>
             </p>
             <p>
+                <% todo.pomodori.forEach((p) => { %>
+                    <%= p.df(p.start) %> - <%= p.df(p.end) %><br/>
+                <% }) %>
+            </p>
+            <p>
                 <form action = "/todos/<%= todo.id %>" method = "POST" >
                 <input type="text" id="todo-title" name="todo-title" value = "<%= todo.title%>">
                 Done: <input type="checkbox" id="todo-done" value = "true" <%= todo.done === true ? 'checked' : '' %> name="todo-done">
@@ -44,7 +49,9 @@
 <!-- the timer part is not meant to be part of this example, just kept
 here to look nice -->
 <script type="text/javascript" src="/javascripts/timer.js" onload="init();loadSound ();"></script>
+<script>
 
+</script>
 <%- contentFor('title') %>
 Show one Todo
 
