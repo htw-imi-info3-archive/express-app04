@@ -11,7 +11,7 @@
                 <% todos.forEach(todo => { %>
                     <li>
                         <form action="/todos/<%= todo.id %>/delete" method="POST" >
-                            <input type="checkbox" <%= todo.done === true ? 'checked' : '' %>/>
+                            <input type="checkbox" <%= todo.done === true ? 'checked' : '' %> onclick="toggleDone(this,'<%=todo.id%>')"/>
                             <a href="/todos/<%= todo.id %> %>"><%= todo.title %></a>
                             <input type="image" src="/images/Deletion_icon.svg" heigt="15px" width="15px" />
                         </form>
@@ -33,10 +33,27 @@
     </tr>
 </table>
 <hr/>
+<div id="xhr_status"></div>
+<hr/>
 <img src="/images/Deletion_icon.svg" heigt="15px" width="15px" alt="Delete"/> by
 <small></small><a href="https://commons.wikimedia.org/wiki/File:Deletion_icon.svg">Edokter (modified
     version)</a>, Public domain, via Wikimedia Commons</small>
 
+<script>
+    function toggleDone(checkbox,id) {
+        let xhr = new XMLHttpRequest();
+        const action = checkbox.checked ? "done" : "reset";
+        xhr.open("GET", `/api/todos/${id}/${action}`, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log (xhr.responseText);
+                document.getElementById("xhr_status").innerHTML = "XHR Response: "+xhr.responseText;
+            }
+        }
+        xhr.send ();
+    }
 
+
+</script>
 <%- contentFor('title') %>
 Todo App
