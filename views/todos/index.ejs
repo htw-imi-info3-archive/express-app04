@@ -6,27 +6,35 @@
 <body>
 
 <table>
-    <tr><td align="center">
+    <tr>
+        <td align="center">
             <h2>Todos</h2>
-        </td></tr>
-    <tr><td align="left">
+        </td>
+    </tr>
+    <tr>
+        <td align="left">
 
             <ul>
                 <% todos.forEach(todo => { %>
-                <li><a href="/todos/<%=todo.id%>%>"><%= todo.title %></a> <input type ="checkbox" <%= todo.done === true ? 'checked': '' %>/></li>
+                <li><a href="/todos/<%= todo.id %> %>"><%= todo.title %></a> <input
+                            type="checkbox" <%= todo.done === true ? 'checked' : '' %>/></li>
 
-                <% }); // todos.forEach  %>
+                <% }); // todos.forEach   %>
             </ul>
 
-        </td></tr>
-    <tr> <form action="/todos" method="post">
+        </td>
+    </tr>
+    <tr>
+        <form action="/todos" method="post">
             <td align="center">
 
                 <input type="text" id="todo-title" name="title"><br><br>
 
                 <input type="submit" value="Add">
 
-            </td> </form></tr>
+            </td>
+        </form>
+    </tr>
 
 </table>
 
