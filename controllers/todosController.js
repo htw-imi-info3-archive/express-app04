@@ -70,3 +70,26 @@ function getParams(body) {
         done: body['todo-done']
     }
 }
+
+exports.apiDone = (req, res, next) => {
+    const todoId = req.params.id
+    Todo.findOneAndUpdate({ _id: todoId }, {done: true},{new: true})
+        .then(result => {
+            res.send(result)
+        })
+        .catch(error => {
+            if (error) res.send(error)
+        })
+}
+
+exports.apiReset = (req, res, next) => {
+    const todoId = req.params.id
+    Todo.findOneAndUpdate({ _id: todoId }, {done: false},{new: true})
+        .then(result => {
+            res.send(result)
+        })
+        .catch(error => {
+            if (error) res.send(error)
+        })
+}
+
