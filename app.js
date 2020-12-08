@@ -27,6 +27,17 @@ app.use(sassMiddleware({
   indentedSyntax: true, // true = .sass and false = .scss
   sourceMap: true
 }));
+
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/app03', {useNewUrlParser: true, useUnifiedTopology: true});
+/*
+const Cat = mongoose.model('Cat', { name: String });
+
+const kitty = new Cat({ name: 'Zildjian' });
+kitty.save().then(() => console.log('meow'));
+*/
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
