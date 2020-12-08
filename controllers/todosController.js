@@ -1,15 +1,32 @@
 'use strict'
 
-const todos = require('../models/todos')
+const Todo = require('../models/todos')
 
 exports.index = (req, res, next) => {
-    res.render('todos/index', {todos: todos})
+        Todo.find()
+            .sort({ 'name': 'asc' })
+            .then(todos => {
+                res.render('todos/index', {todos: todos})
+            })
+            .catch(error => {
+                console.log(`Error fetching todos: ${error.message}`)
+                next(error)
+            })
 }
 
 exports.show = (req, res, next) => {
     const todoId = req.params.id
-    res.render('todos/show', {todo: todos[todoId]})
+    Todo.findById(todoId)
+        .then( todo =>{
+            res.render('todos/show', {todo: todo})
+        })
+        .catch(error => {
+            console.log(`Error fetching todo by ID: ${error.message}`)
+            next(error)
+        })
+
 }
+
 
 exports.create = (req, res, next) => {
     const newTodo = getParams(req.body)
