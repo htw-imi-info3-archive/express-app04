@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Timer</title>
-    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-    <script type="text/javascript" src="/javascripts/timer.js"></script>
-</head>
-<body onload="init();loadSound ();">
+
 <table>
     <tr>
         <td align="center">
@@ -42,5 +34,14 @@
 
 </table>
 
-</body>
-</html>
+
+<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+<!-- the timer part is not meant to be part of this example, just kept
+here to look nice -->
+<script type="text/javascript" src="/javascripts/timer.js" onload="init();loadSound ();"></script>
+
+<%- contentFor('title') %>
+Show one Todo
+
+<%- contentFor('onLoad') %>
+onload="init();loadSound ();"
