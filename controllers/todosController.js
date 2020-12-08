@@ -29,9 +29,17 @@ exports.show = (req, res, next) => {
 
 
 exports.create = (req, res, next) => {
-    const newTodo = getParams(req.body)
-    res.send({todo: newTodo, body: req.body})
+    const todoParams = getParams(req.body)
+    const newTodo = new Todo(todoParams)
+    newTodo.save()
+        .then(result => {
+            res.render('todos/show', {todo: result})
+        })
+        .catch(error => {
+            if (error) res.send(error)
+        })
 }
+
 
 function getParams(body) {
     const o = {}
