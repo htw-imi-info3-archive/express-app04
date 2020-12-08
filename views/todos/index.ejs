@@ -7,14 +7,15 @@
 
 <table>
     <tr><td align="center">
-            <h2><%= title %></h2>
+            <h2>Todos</h2>
         </td></tr>
     <tr><td align="left">
 
             <ul>
-                <li><a href="/todos/1">Buy milk</a> <input type ="checkbox"/></li>
-                <li><a href="/todos/2">Write Article</a> <input type ="checkbox"/></li>
-                <li><a href="/todos/3">Read Paper</a> <input type ="checkbox" checked/></li>
+                <% todos.forEach(todo => { %>
+                <li><a href="/todos/<%=todo.id%>%>"><%= todo.title %></a> <input type ="checkbox" <%= todo.done === true ? 'checked': '' %>/></li>
+
+                <% }); // todos.forEach  %>
             </ul>
 
         </td></tr>

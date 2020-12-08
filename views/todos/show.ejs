@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>Timer</title>
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-    <script type = "text/javascript" src="timer.js" ></script>
+    <script type = "text/javascript" src="/javascripts/timer.js" ></script>
 </head>
 <body onload="init();loadSound ();">
 <table>
     <tr><td align="center">
-            <h2>Todo: Read Book (No <%= id %>)</h2>
+            <h2>Todo: <%= todo.title %> (No <%= todo.id %>)</h2>
             <p>Pomodori: 5 </p>
             <p><button>Done</button></p>
         </td></tr>
