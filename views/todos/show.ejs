@@ -11,6 +11,7 @@
     <tr><td align="center">
             <h2>Todo: <%= todo.title %> (No <%= todo.id %>)</h2>
             <p>Pomodori: <%= todo.pomodori.length %> </p>
+            <p><% for (var i = 0; i< todo.pomodori.length; i++) { %><img src="/images/timer50.png"><% } %> </p>
             <p><button>Done</button></p>
         </td></tr>
     <tr><td>
