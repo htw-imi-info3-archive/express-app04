@@ -1,4 +1,9 @@
-// https://www.createjs.com/tutorials/Getting%20Started/
+// This is really just a tryout of creating a timer with easel.js
+// It is by no means an example of well designed software
+
+// based on:
+// https://createjs.com/tutorials/Animation%20and%20Ticker/
+// https://www.createjs.com/docs/soundjs/modules/SoundJS.html
 
 function loadSound () {
     createjs.Sound.registerSound("assets/Notice1.m4a", "notice");
