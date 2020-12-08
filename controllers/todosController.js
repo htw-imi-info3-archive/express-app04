@@ -40,11 +40,22 @@ exports.create = (req, res, next) => {
         })
 }
 
+exports.update = (req, res, next) => {
+    const todoId = req.params.id
+    const todoParams = getParams(req.body)
+
+    Todo.findOneAndUpdate({ _id: todoId }, todoParams,{new: true})
+        .then(result => {
+            res.render('todos/show', {todo: result})
+        })
+        .catch(error => {
+            if (error) res.send(error)
+        })
+}
 
 function getParams(body) {
-    const o = {}
-    if (body['title']) {
-        o['title'] = body['title']
+    return {
+        title: body['todo-title'],
+        done: body['todo-done']
     }
-    return o;
 }
