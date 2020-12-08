@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 const pomodoroSchema = mongoose.Schema({
     start: Date,
-    end: Date
+    end: Date,
+    status: String
 })
 pomodoroSchema.methods.df = (date) =>{
 // https://stackoverflow.com/questions/10645994/how-to-format-a-utc-date-as-a-yyyy-mm-dd-hhmmss-string-using-nodejs
@@ -13,9 +14,13 @@ pomodoroSchema.methods.df = (date) =>{
 const todoSchema = mongoose.Schema({
     title: String,
     done: Boolean,
-    pomodori: [{type: pomodoroSchema}]
+    pomodori: [{type: pomodoroSchema}],
+    current: pomodoroSchema
 })
 todoSchema.virtual('pomodoriUsed').get(function () {
     return this.pomodori.length
 })
-module.exports = mongoose.model('Todo', todoSchema)
+module.exports = {
+    Todo: mongoose.model('Todo', todoSchema),
+    Pomodoro: mongoose.model('Pomodoro', pomodoroSchema)
+}

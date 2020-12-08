@@ -1,6 +1,6 @@
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/app03'
 const mongoose = require('mongoose')
-const Todo = require('../../models/todos')
+const {Todo} = require('../../models/todos')
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const todoData = require('./todo-data.js')

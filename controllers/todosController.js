@@ -1,6 +1,6 @@
 'use strict'
 
-const Todo = require('../models/todos')
+const {Todo} = require('../models/todos')
 
 exports.index = (req, res, next) => {
         Todo.find()

@@ -6,7 +6,7 @@
 // https://www.createjs.com/docs/soundjs/modules/SoundJS.html
 
 function loadSound () {
-    createjs.Sound.registerSound("assets/Notice1.m4a", "notice");
+    createjs.Sound.registerSound("/sounds/Notice1.m4a", "notice");
 }
 
 function playSound (soundID) {
@@ -18,10 +18,11 @@ var stage ;
 var startTime;
 var pie ;
 var running = false;
+var callback;
 
 
-function init() {
-
+function init(callbackFunction) {
+    callback = callbackFunction;
     stage = new createjs.Stage("timerCanvas");
     pie = new createjs.Shape();
     pie.minutes = 0;
@@ -48,14 +49,16 @@ function start(){
     running = true;
     pie.startTime = new Date().getTime();
     pie.reset()
-    document.getElementById("timerStart").innerHTML = "Stop"
+    document.getElementById("timerStart").innerHTML = "Finish"
     createjs.Ticker.addEventListener("tick", handleTick);
+    callback('start')
 }
 function stop(){
     running = false;
     createjs.Ticker.removeEventListener("tick", handleTick);
     document.getElementById("timerStart").innerHTML = "Start"
     pie.reset()
+    callback('finish')
 }
 function setMinutes(){
     stop()
@@ -160,3 +163,5 @@ function clockTick() {
     hr.rotation = hrToAngle()-90 + (30*(minToAngle()/360));
     stage.update();
 }
+
+
