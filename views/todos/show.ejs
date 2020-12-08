@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer</title>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <script type = "text/javascript" src="timer.js" ></script>
+</head>
+<body onload="init();loadSound ();">
+<table>
+    <tr><td align="center">
+            <h2>Todo: Read Book</h2>
+            <p>Pomodori: 5 </p>
+            <p><button>Done</button></p>
+        </td></tr>
+    <tr><td>
+
+            <canvas id="timerCanvas" width="500" height="500">
+                alternate content
+            </canvas>
+        </td></tr>
+    <tr align="center"><td>
+            <button id = "timerStart" onclick="start_stop();">Start</button>
+            <input type="number" id="minutes" name="minutes" step = "5" value = "25"/>
+            <button onclick="setMinutes();" class="playSound">reset</button>
+        </td></tr>
+    <tr align="right"><td><a href="index.html">Back</a></td></tr>
+
+</table>
+
+</body>
+</html>
