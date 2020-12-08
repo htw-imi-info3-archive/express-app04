@@ -1,4 +1,26 @@
 'use strict'
+
+const pomodori = [
+    {
+        start: '2020-12-08T12:00:00.000Z',
+        end: '2020-12-08T12:25:00.000Z'
+    },
+    {
+        start: '2020-12-08T12:00:00.000Z',
+        end: '2020-12-08T12:25:00.000Z'
+    },
+    {
+        start: '2020-12-08T12:00:00.000Z',
+        end: '2020-12-08T12:25:00.000Z'
+    },
+    {
+        start: '2020-12-08T12:00:00.000Z',
+        end: '2020-12-08T12:25:00.000Z'
+    },
+    {
+        start: '2020-12-08T12:00:00.000Z',
+        end: '2020-12-08T12:25:00.000Z'
+    }]
 const todos = [
     {
         id: 0,
@@ -21,15 +43,18 @@ const todos = [
     }, {
         id: 2,
         title: 'Buy Milk',
-        done: false
+        done: false,
+        pomodori: pomodori.slice(0,4)
     }, {
         id: 3,
         title: 'Write Article',
-        done: true
+        done: true,
+        pomodori: pomodori.slice(0,5)
     }, {
         id: 4,
         title: 'Fix Bug',
-        done: false
+        done: false,
+        pomodori: pomodori.slice(0,2)
     }]
 
 
