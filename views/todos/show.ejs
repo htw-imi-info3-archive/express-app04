@@ -9,7 +9,7 @@
             </p>
             <p>
                 <% todo.pomodori.forEach((p) => { %>
-                    <%= p.df(p.start) %> - <%= p.df(p.end) %><br/>
+                    <%= p.df(p.start) %> - <%= p.df(p.end) %> <%= p.status %><br/>
                 <% }) %>
             </p>
             <p>
