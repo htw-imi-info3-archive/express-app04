@@ -53,6 +53,17 @@ exports.update = (req, res, next) => {
         })
 }
 
+exports.delete = (req, res, next) => {
+    const todoId = req.params.id
+    Todo.findByIdAndRemove(todoId)
+        .then(() => {
+            next();
+        })
+        .catch(error => {
+            if (error) res.send(error)
+        })
+}
+
 function getParams(body) {
     return {
         title: body['todo-title'],

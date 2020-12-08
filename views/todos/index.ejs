@@ -1,4 +1,3 @@
-
 <table>
     <tr>
         <td align="center">
@@ -10,10 +9,16 @@
 
             <ul>
                 <% todos.forEach(todo => { %>
-                <li><a href="/todos/<%= todo.id %> %>"><%= todo.title %></a> <input
-                            type="checkbox" <%= todo.done === true ? 'checked' : '' %>/></li>
+                    <li>
+                        <form action="/todos/<%= todo.id %>/delete" method="POST" >
+                            <input type="checkbox" <%= todo.done === true ? 'checked' : '' %>/>
+                            <a href="/todos/<%= todo.id %> %>"><%= todo.title %></a>
+                            <input type="image" src="/images/Deletion_icon.svg" heigt="15px" width="15px" />
+                        </form>
 
-                <% }); // todos.forEach   %>
+                    </li>
+
+                <% }); // todos.forEach     %>
             </ul>
 
         </td>
@@ -21,15 +26,17 @@
     <tr>
         <form action="/todos" method="post">
             <td align="center">
-
-                <input type="text" id="todo-title" name="title"><br><br>
-
+                <input type="text" id="todo-title" name="todo-title"><br><br>
                 <input type="submit" value="Add">
-
             </td>
         </form>
     </tr>
+</table>
+<hr/>
+<img src="/images/Deletion_icon.svg" heigt="15px" width="15px" alt="Delete"/> by
+<small></small><a href="https://commons.wikimedia.org/wiki/File:Deletion_icon.svg">Edokter (modified
+    version)</a>, Public domain, via Wikimedia Commons</small>
 
 
 <%- contentFor('title') %>
-    Todo App
+Todo App
