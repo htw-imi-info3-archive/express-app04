@@ -1,10 +1,11 @@
 const request = require("supertest");
 const app = require("../../../app");
 const {Todo} = require("../../../models/todos")
+require("../../testSetup")
 
 describe("Todos Index", () => {
     test("It should show todos", (done) => {
-        const titles = ["Todo in Index 1", "Another todo in index"];
+        const titles = ["Todo in Index", "Another todo in index"];
         const todoData = titles.map(title => {return {title: title, done: false}})
         Todo.create(todoData)
             .then(created => {

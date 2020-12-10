@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+require('../mongoose')
 var app = require('../app');
 var debug = require('debug')('app02:server');
 var http = require('http');
