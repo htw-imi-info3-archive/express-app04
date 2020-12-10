@@ -1,14 +1,16 @@
-//export MONGO_URL_USE_TEST='mongodb://localhost:27017/app04_test'
-const mongodbURI = process.env.MONGO_URL_USE_TEST || process.env.MONGO_URL
-
+module.exports = {
+    app: require("../app"),
+    request: require("supertest"),
+    ...require("../models/todos")
+}
 
 const mongoose = require('mongoose')
 beforeAll((done) => {
     process.env.NODE_ENV = 'test'
     mongoose.set('bufferCommands', false)
-    mongoose.connect(mongodbURI,
-        { useNewUrlParser: true, useUnifiedTopology: true })
-        .then(x =>{
+    mongoose.connect(process.env.MONGO_URL,
+        {useNewUrlParser: true, useUnifiedTopology: true})
+        .then(x => {
             console.log('connected to mongoose: ' + mongodbURI);
             done();
         })
@@ -22,3 +24,5 @@ beforeAll((done) => {
 afterAll(async () => {
     await mongoose.connection.close()
 })
+
+
